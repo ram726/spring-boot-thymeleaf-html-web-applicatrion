@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Home Page</title>
+</head>
+<body style="background: #b3b3cc">
+<div>
+    <center >
+        <h1 style="color:white">User Mangement</h1>
+        <a style="color:green" href="/">See All User</a>
+        <form , method="post" th:action="@{/save}" th:object="${any}">
+            <h3>Updating User</h3>
+            <input type="hidden" name="id" th:value="${any.id}">
+            <table style="color: black">
+                <tr><th>Update User Name</th><th><input type ="text"placeholder="enter user name" name="name" th:value="${any.name}"></th></tr>
+                <tr><th>Update User Phone</th><th><input type ="number"placeholder="enter user phone number" name="phone" th:value="${any.phone}"></th></tr>
+                <tr><th><button type="submit">Update</button></th></tr>
+            </table>
+        </form>
+    </center>
+</div>
+
+</body>
+</html>

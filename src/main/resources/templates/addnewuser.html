@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Home Page</title>
+    <style>
+        body{
+
+        }
+    </style>
+</head>
+<body style="background: #b3b3cc">
+<div>
+    <center >
+        <h1 style="color:white">User Mangement</h1>
+        <a style="color:green" href="/">See All User</a><br><br>
+        <form method="post", th:action="@{/save}">
+            <h3>Adding an user</h3>
+            <table style="color: black">
+                <tr><th>User Name</th><th><input type ="text"placeholder="enter user name" name="name"></th></tr>
+                <tr><th>User Phone</th><th><input type ="number"placeholder="enter user phone number" name="phone"></th></tr>
+                <tr><th><button type="submit">Add</button></th></tr>
+            </table>
+        </form>
+    </center>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Home Page</title>
+</head>
+<body style="background: #b3b3cc">
+<div>
+    <center >
+        <h1 style="color:white">User Mangement</h1>
+        <a style="color:green" href="add">Add New User</a><br><br>
+        <table border ="2" style="color: black">
+            <tr style="color: black">
+                <th>User Id</th>
+                <th>User Name</th>
+                <th>User Phone</th>
+                <th style="color:#9C110D">Action</th>
+            </tr>
+            <tr style="color:#9C0D50" th:each="u:${any}">
+                <th th:text="${u.id}"></th>
+                <th th:text="${u.name}"></th>
+                <th th:text="${u.phone}"></th>
+                <th>
+                    <table>
+                        <tr>
+                            <td><a style="color:#590D9C" th:href="@{/update/{id} (id=${u.id})}">Update&nbsp;</a></td>
+                            <td><a style="color:#A72E14" th:href="@{/delete/{id} (id=${u.id})}">&nbsp;Delete</a></td>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <b>
+                      <span th:each="i:${#numbers.sequence(1,totalPages)}">
+                            <a th:if="${i != currentPage}" th:href="@{'/page/'+${i}}">[[${i}]]</a>
+                          <b style="color:#C80BC2"><span th:unless="${i != currentPage}">[[${i}]]</span></b>
+                  </span>
+                    </b>
+                </td>
+            </tr>
+        </table><br>
+        <table border ="1">
+            <tr>
+                <td>
+                    <a th:if="${currentPage > 1}" th:href="@{/page/1}"> First Page </a>
+                    <span th:unless="${currentPage > 1}"> First Page </span>
+                </td>
+                <td>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next Page</a>
+                    <span th:unless="${currentPage < totalPages}"> Next Page </span>
+                </td>
+                <td>
+                    <a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1}}">Previous Page</a>
+                    <span th:unless="${currentPage > 1}"> Previous Page </span>
+                </td>
+                <td>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last Page</a>
+                    <span th:unless="${currentPage < totalPages}"> Last Page </span>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="1">
+            <tr>
+                <td><b>Total Record:</b> [[${totalItems}]]</td>
+                <td><b>Current Page:</b> [[${currentPage}]]</td>
+                <td><b>Total Page:</b> [[${totalPages}]]</td>
+            </tr>
+        </table>
+        <br><br>
+    </center>
+</div>
+
+</body>
+</html>
